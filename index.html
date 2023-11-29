@@ -116,24 +116,24 @@
     <p id="wakeUpMessage" class="magicEffect hidden">Le sorcier se réveille !</p>
     <p id="sorcererSpeech" class="hidden">"Ah, enfin réveillé ! J'ai rêvé que j'étais un crapaud..."</p>
     <a href="https://killevent.github.io/enigmesorcier2/" class="button-like hidden" id="redirectLink">Parler au sorcier</a>
+<script>
+  function updateDisplay(value) {
+    var showElements = value.toUpperCase() === 'NOCULUSPOCUS';
+    document.getElementById('wakeUpMessage').style.display = showElements ? 'block' : 'none';
+    document.getElementById('sorcererSpeech').style.display = showElements ? 'block' : 'none';
+    document.getElementById('sorcererImage').src = showElements ? 'sorcierreveill.png' : 'sorcierquidortt.gif';
+    document.getElementById('redirectLink').style.display = showElements ? 'inline-block' : 'none';
+}
 
-    <script>
-        function updateDisplay(value) {
-            var showElements = value.toUpperCase() === 'NOCULUSPOCUS';
-            document.getElementById('wakeUpMessage').style.display = showElements ? 'block' : 'none';
-            document.getElementById('sorcererSpeech').style.display = showElements ? 'block' : 'none';
-            document.getElementById('sorcererImage').src = showElements ? 'sorcierreveill.png' : 'sorcierquidortt.gif';
-            document.getElementById('redirectLink').style.display = showElements ? 'block' : 'none';
-        }
+document.getElementById('magicWord').addEventListener('input', function(e) {
+    updateDisplay(e.target.value);
+});
 
-        document.getElementById('magicWord').addEventListener('input', function(e) {
-            updateDisplay(e.target.value);
-        });
-
-        // Assurez-vous que le bouton est caché au chargement de la page
-        window.onload = function() {
-            updateDisplay('');
-        };
+// Assurez-vous que le bouton est caché au chargement de la page
+window.onload = function() {
+    updateDisplay('');
+};
     </script>
+
 </body>
 </html>

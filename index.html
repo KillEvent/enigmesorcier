@@ -142,6 +142,32 @@ window.onload = function() {
     updateDisplay('');
 };
     </script>
+    <script>document.querySelectorAll('.dot').forEach(function(dot, index) {
+    dot.addEventListener('click', function() {
+        // Créez la bulle si elle n'existe pas déjà
+        var tooltip = document.querySelector('.tooltip') || document.createElement('div');
+        tooltip.className = 'tooltip';
+        document.body.appendChild(tooltip);
+
+        // Définir le texte de la bulle en fonction de la couleur du point
+        var colorNames = ['Bordeaux', 'Bleu', 'Noir', 'Orange', 'Jaune', 'Vert', 'Violet', 'Marron', 'Blanc', 'Rouge'];
+        tooltip.textContent = colorNames[index];
+
+        // Positionner la bulle près du point
+        var rect = dot.getBoundingClientRect();
+        tooltip.style.left = rect.left + window.scrollX + 'px';
+        tooltip.style.top = rect.top + window.scrollY - 30 + 'px';
+
+        // Afficher la bulle
+        tooltip.style.display = 'block';
+
+        // Cacher la bulle après 3 secondes
+        setTimeout(function() {
+            tooltip.style.display = 'none';
+        }, 3000);
+    });
+});
+</script>
 
 </body>
 </html>
